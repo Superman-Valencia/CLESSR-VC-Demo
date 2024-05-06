@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>CLESSR-VC</title>
+		    <style>
+    			.image-container {
+      				display: flex;
+      				justify-content: center;
+    				}
+    			.image-container img {
+      			max-width: 80%; /* 可以根据需要调整图片的最大宽度 */
+      			margin-right: 10px; /* 设置图片之间的间隔 */
+    				}
+    			.image-caption {
+    			font-size: 20px; /* 设置字号 */
+    			font-weight: normal;
+  					}
+ 			 </style>
+		<style>
+  			audio{
+    			width: 175px; /* 设置播放器宽度为 300px */
+  				}
+		</style>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<h1 style="font-size: 50px;">CLESSR-VC: Contrastive Learning Enhanced Self-Supervised Representation for One-shot Voice Conversion</h1>
+						<p style="font-size: 35px;">Yuhang Xue, Ning Chen<sup>*</sup></p>
+						<p style=" font-size: 25px;">East China University of Science and Technology, Shanghai 200237, China</p>
+						<p style="font-size: 25px;">*Corresponding author</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Introduction -->
+							<section id="abstract" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Abstract</h2>
+										</header>
+										<p style="text-align: justify; font-weight: normal">One-shot voice conversion (VC) is getting more and more attention because it is closer to practical applications.
+											This paper proposes a CLESSR-VC model, which enhances pre-trained self-supervised representations through contrastive learning for one-shot VC.
+											First, SSL features from the 23rd layer of the pre-trained WavLM are adopted as the input to the content encoder.
+											Then, contrastive learning combined with the pitch-shifting-based augmentation method is applied to disentangle content information from SSL features.
+											Second, SSL features from the 9th layer of the pre-trained WavLM and mel-spectrograms are adopted to extract SSL speaker embedding and mel speaker embedding, respectively.
+											Then, AM-Softmax and cross-architecture contrastive learning are applied to obtain the fused speaker embedding that helps improve speech quality and speaker similarity.
+											Both objective and subjective evaluation results confirm that the proposed VC model has outstanding performance and few trainable parameters.</p>
+									</div>
+								</div>
+							</section>
+
+							<section id="proposed model" class="main">
+								<div class="spotlight">
+									<div class="content">
+										<header class="major">
+											<h2>Proposed Model</h2>
+									<div class="image-container">
+										<img src="images/CLESSR-VC.jpg" alt="Image1" style="margin-top: 25px"/></img>
+									</div>
+									<div class="image-container"><p class="image-caption">Fig.1: The overall architecture of the proposed model.</p>
+									</div>
+							</section>
+
+						<!-- Second Section -->
+						<section id="converted samples" class="main">
+								<header class="major">
+									<h2 >Converted samples</h2>
+								</header>
+								<p style="font-size: 30px; font-weight: bold">Male to Female conversion</p>
+								<table>
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Text</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Source</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Target</center>
+									</tr>
+									<tr>
+										<td style="vertical-align: middle;"><center>Some have accepted it as a miracle without physical explanation. </center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p226_013.wav" type="audio/wav"></audio></center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p233_054.wav" type="audio/wav"></audio></center>
+									</tr>
+								</table>
+								<table style="margin-top:-47px;">
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Again-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>BetaVAE-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>SRD-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>TriAAN-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>S2VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>LIMI-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Proposed</center>
+									</tr>
+									<tr>
+										<td><audio controls="controls" source src="demo/Again-VC/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+										<td><audio controls="controls" source src="demo/BetaVAE/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/SRD-VC/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/TriAAN-VC/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/S2VC/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/LIMI-VC/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/Proposed/p226_013_to_p233_054.wav" type="audio/wav"></audio>
+									</tr>
+								</table>
+							<p style="font-size: 30px; font-weight: bold">Male to Male conversion</p>
+							<table>
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Text</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Source</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Target</center>
+									</tr>
+									<tr>
+										<td style="vertical-align: middle;"><center>Some have accepted it as a miracle without physical explanation. </center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p227_013.wav" type="audio/wav"></audio></center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p376_040.wav" type="audio/wav"></audio></center>
+									</tr>
+								</table>
+
+								<table style="margin-top:-47px;">
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Again-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>BetaVAE-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>SRD-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>TriAAN-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>S2VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>LIMI-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Proposed</center>
+									</tr>
+									<tr>
+										<td><audio controls="controls" source src="demo/Again-VC/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+										<td><audio controls="controls" source src="demo/BetaVAE/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/SRD-VC/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/TriAAN-VC/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/S2VC/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/LIMI-VC/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/Proposed/p227_013_to_p376_040.wav" type="audio/wav"></audio>
+									</tr>
+								</table>
+							<p style="font-size: 30px; font-weight: bold">Female to Male conversion</p>
+							<table>
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Text</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Source</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Target</center>
+									</tr>
+									<tr>
+										<td style="vertical-align: middle;"><center>The tournament has now been cancelled.</center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p230_063.wav" type="audio/wav"></audio></center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p376_056.wav" type="audio/wav"></audio></center>
+									</tr>
+								</table>
+								<table style="margin-top:-47px;">
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Again-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>BetaVAE-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>SRD-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>TriAAN-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>S2VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>LIMI-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Proposed</center>
+									</tr>
+									<tr>
+										<td><audio controls="controls" source src="demo/Again-VC/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+										<td><audio controls="controls" source src="demo/BetaVAE/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/SRD-VC/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/TriAAN-VC/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/S2VC/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/LIMI-VC/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/Proposed/p230_063_to_p376_056.wav" type="audio/wav"></audio>
+									</tr>
+								</table>
+							<p style="font-size: 30px; font-weight: bold">Female to Female conversion</p>
+							<table>
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Text</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Source</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Target</center>
+									</tr>
+									<tr>
+										<td style="vertical-align: middle;"><center>Otherwise, it will cost a lot of money.</center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p229_082.wav" type="audio/wav"></audio></center>
+										<td style="vertical-align: middle; font-weight: bold"><center><audio controls="controls" source src="demo/Ground truth/p233_065.wav" type="audio/wav"></audio></center>
+									</tr>
+								</table>
+
+								<table style="margin-top:-47px;margin-bottom:-150px;">
+									<tr>
+										<td style="vertical-align: middle; font-weight: bold"><center>Again-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>BetaVAE-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>SRD-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>TriAAN-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>S2VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>LIMI-VC</center>
+										<td style="vertical-align: middle; font-weight: bold"><center>Proposed</center>
+									</tr>
+									<tr>
+										<td><audio controls="controls" source src="demo/Again-VC/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+										<td><audio controls="controls" source src="demo/BetaVAE/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/SRD-VC/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/TriAAN-VC/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/S2VC/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/LIMI-VC/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+                              			<td><audio controls="controls" source src="demo/Proposed/p229_082_to_p233_065.wav" type="audio/wav"></audio>
+									</tr>
+								</table>
+
+							</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<p class="copyright" style="font-style:italic">&copy;Designed by Yuhang Xue</p>
+					</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
